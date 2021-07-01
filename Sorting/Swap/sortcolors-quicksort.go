@@ -1,4 +1,4 @@
-package Swap
+package swap
 
 /*
 https://books.halfrost.com/leetcode/ChapterFour/0001~0099/0075.Sort-Colors/

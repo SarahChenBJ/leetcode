@@ -1,4 +1,4 @@
-package Search
+package search
 
 /*
 1283. Find the Smallest Divisor Given a Threshold #

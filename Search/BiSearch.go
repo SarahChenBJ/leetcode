@@ -1,4 +1,4 @@
-package Search
+package search
 
 /* 简单二分查找*/
 

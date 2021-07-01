@@ -1,4 +1,4 @@
-package Merging
+package merging
 
 /*
 题目 876. Middle of the Linked List

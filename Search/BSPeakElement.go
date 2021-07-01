@@ -1,4 +1,4 @@
-package Search
+package search
 
 /*
 162. Find Peak Element #

@@ -1,4 +1,4 @@
-package DataStruct
+package dataStruct
 
 type ListNode struct {
 	Val  int
