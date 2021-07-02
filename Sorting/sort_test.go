@@ -1,11 +1,13 @@
-package insertion
+package sorting
 
 import (
 	"fmt"
 	"reflect"
 	"testing"
 
+	swap "github.com/sarahchen/leetcode/Sorting/Swap"
 	"github.com/sarahchen/leetcode/dataStruct"
+	"github.com/sarahchen/leetcode/sorting/insertion"
 )
 
 var (
@@ -61,7 +63,7 @@ func TestDirectInsertionSort(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			a := tt.array
-			if DirectInsertionSort(a); !reflect.DeepEqual(a, tt.want) {
+			if insertion.DirectInsertionSort(a); !reflect.DeepEqual(a, tt.want) {
 				t.Errorf("DirectInsertionSort() = %v, want %v", a, tt.want)
 			}
 		})
@@ -82,7 +84,7 @@ func TestBiInsertionSort(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			a := tt.array
-			if BiInsertionSort(a); !reflect.DeepEqual(a, tt.want) {
+			if insertion.BiInsertionSort(a); !reflect.DeepEqual(a, tt.want) {
 				t.Errorf("BiInsertionSort() = %v, want %v", a, tt.want)
 			}
 		})
@@ -103,7 +105,7 @@ func TestShellSort(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			a := tt.array
-			if ShellSort(a); !reflect.DeepEqual(a, tt.want) {
+			if insertion.ShellSort(a); !reflect.DeepEqual(a, tt.want) {
 				t.Errorf("ShellSort() = %v, want %v", a, tt.want)
 			}
 		})
@@ -125,8 +127,50 @@ func TestLinkInsertionSort(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			link := convertArrayToLink(tt.array)
 			wantLink := convertArrayToLink(tt.want)
-			if l := LinkInsertionSort(link); !IsTheSameLink(l, wantLink) {
+			if l := insertion.LinkInsertionSort(link); !IsTheSameLink(l, wantLink) {
 				t.Errorf("ShellSort() = %v, want %v", l, wantLink)
+			}
+		})
+	}
+}
+
+func TestBubbleSort(t *testing.T) {
+	tests := []struct {
+		name  string
+		array []int
+		want  []int
+	}{
+		{name: "direct-1", array: a1, want: a1Asc},
+		{name: "repeat", array: a2, want: a2Asc},
+		{name: "one", array: a3, want: a3Asc},
+		{name: "empty", array: a4, want: a4Asc},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			a := tt.array
+			if swap.BubbleSort(a); !reflect.DeepEqual(a, tt.want) {
+				t.Errorf("ShellSort() = %v, want %v", a, tt.want)
+			}
+		})
+	}
+}
+
+func TestQuickSort(t *testing.T) {
+	tests := []struct {
+		name  string
+		array []int
+		want  []int
+	}{
+		{name: "direct-1", array: a1, want: a1Asc},
+		{name: "repeat", array: a2, want: a2Asc},
+		{name: "one", array: a3, want: a3Asc},
+		{name: "empty", array: a4, want: a4Asc},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			a := tt.array
+			if swap.QuickSort(a); !reflect.DeepEqual(a, tt.want) {
+				t.Errorf("ShellSort() = %v, want %v", a, tt.want)
 			}
 		})
 	}

@@ -22,3 +22,30 @@ First, iterate the array counting number of 0’s, 1’s, and 2’s, then overwr
 Could you come up with a one-pass algorithm using only constant space?
 
 */
+
+/*SortColors : 要求一次遍历全部分好, 用快排
+[0:i] 0
+[i+1:h] 1
+[h+1:j] 2
+每次出现 0: i和 h 都要挪动
+每次出现 1: 只 h 挪动
+*/
+func SortColors(array []int) {
+	i, h := -1, -1
+	for j := 0; j < len(array); j++ {
+		if array[j] == 0 {
+			array[j] = 2
+			h++
+			array[h] = 1
+			i++
+			array[i] = 0
+
+		}
+		if array[j] == 1 {
+			array[j] = 2
+			h++
+			array[h] = 1
+
+		}
+	}
+}
