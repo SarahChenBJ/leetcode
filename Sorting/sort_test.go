@@ -237,7 +237,51 @@ func TestMerginigSort_norecursive(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			a := tt.array
 			if merging.MerginigSort_norecursive(a); !reflect.DeepEqual(a, tt.want) {
-				t.Errorf("ShellSort() = %v, want %v", a, tt.want)
+				t.Errorf("MerginigSort_norecursive() = %v, want %v", a, tt.want)
+			}
+		})
+	}
+}
+
+func TestCampaignSorting(t *testing.T) {
+
+	tests := []struct {
+		name  string
+		array []int
+		want  []int
+	}{
+		{name: "direct-1", array: a1, want: a1Asc},
+		{name: "repeat", array: a2, want: a2Asc},
+		{name: "one", array: a3, want: a3Asc},
+		{name: "empty", array: a4, want: a4Asc},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			a := tt.array
+			if selection.CampaignSorting(a); !reflect.DeepEqual(a, tt.want) {
+				t.Errorf("CampaignSorting() = %v, want %v", a, tt.want)
+			}
+		})
+	}
+}
+
+func TestHeapSorting(t *testing.T) {
+
+	tests := []struct {
+		name  string
+		array []int
+		want  []int
+	}{
+		{name: "direct-1", array: a1, want: a1Asc},
+		{name: "repeat", array: a2, want: a2Asc},
+		{name: "one", array: a3, want: a3Asc},
+		{name: "empty", array: a4, want: a4Asc},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			a := tt.array
+			if selection.HeapSorting(a); !reflect.DeepEqual(a, tt.want) {
+				t.Errorf("HeapSorting() = %v, want %v", a, tt.want)
 			}
 		})
 	}
