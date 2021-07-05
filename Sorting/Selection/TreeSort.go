@@ -12,7 +12,6 @@ func CampaignSorting(array []int) {
 					array[p] = array[k-p+j]
 					array[k-p+j] = t
 				}
-
 			}
 			k = p - 1
 		}
