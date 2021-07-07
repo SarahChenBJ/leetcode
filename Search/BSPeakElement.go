@@ -28,3 +28,23 @@ Note:
 Your solution should be in logarithmic complexity.
 
 */
+
+func FindPeak(array []int) int {
+	low, high := 0, len(array)-1
+	for low <= high {
+		mid := (low + high) / 2
+		if mid == len(array)-1 {
+			return mid
+		}
+		if array[mid] > array[mid+1] {
+			if mid >= 1 && array[mid] > array[mid-1] {
+				return mid
+			}
+			high = mid
+		}
+		if array[mid] <= array[mid+1] {
+			low = mid + 1
+		}
+	}
+	return low
+}

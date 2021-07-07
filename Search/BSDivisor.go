@@ -30,3 +30,52 @@ Constraints:
 1 <= nums[i] <= 10^6
 nums.length <= threshold <= 10^6
 */
+
+func SmallestDivisor(array []int, threshold int) int {
+	if threshold == 0 {
+		return 0
+	}
+	s := 0
+	for _, v := range array {
+		s += v
+	}
+	for low, high := s/threshold, 10^6; low <= high; {
+		mid := (low + high) / 2
+		r := result(array, mid, threshold)
+		if r > 0 {
+			low = mid + 1
+		}
+		if r <= 0 {
+			if mid == s/threshold || result(array, mid-1, threshold) > 0 {
+				return mid
+			}
+			high = mid - 1
+		}
+	}
+	return -1
+}
+
+//result return:
+//1: when sum/divisor > threshold
+//-1: when sum/divisor< threshold
+//0: when sum/divisor = threshold
+func result(array []int, divisor, threshold int) int {
+	if divisor == 0 {
+		return 1
+	}
+	s := 0
+	for _, v := range array {
+		if v%divisor == 0 {
+			s += v / divisor
+		} else {
+			s += v/divisor + 1
+		}
+	}
+	if s > threshold {
+		return 1
+	}
+	if s < threshold {
+		return -1
+	}
+	return 0
+}
