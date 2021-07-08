@@ -1,5 +1,7 @@
 package BST
 
+import "github.com/sarahchen/leetcode/dataStruct"
+
 /*
 108. Convert Sorted Array to Binary Search Tree #
 https://books.halfrost.com/leetcode/ChapterFour/0100~0199/0108.Convert-Sorted-Array-to-Binary-Search-Tree/
@@ -20,3 +22,15 @@ One possible answer is: [0,-3,9,-10,null,5], which represents the following heig
    /   /
  -10  5
 */
+
+func BalancedBSTFromAscArray(array []int, start, end int) *dataStruct.TreeNode {
+	if start > end {
+		return nil
+	}
+	mid := (start + end) / 2
+	return &dataStruct.TreeNode{
+		Val:   array[mid],
+		Left:  BalancedBSTFromAscArray(array, start, mid-1),
+		Right: BalancedBSTFromAscArray(array, mid+1, end),
+	}
+}
