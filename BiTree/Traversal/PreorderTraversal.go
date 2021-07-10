@@ -1,49 +1,26 @@
-package BiTree
+package bitree
 
 import (
-	"fmt"
-
+	bitree "github.com/sarahchen/leetcode/BiTree"
 	"github.com/sarahchen/leetcode/dataStruct"
 )
 
 /*https://books.halfrost.com/leetcode/ChapterFour/0100~0199/0144.Binary-Tree-Preorder-Traversal/*/
 
-type TreeStack struct {
-	Stack []*dataStruct.TreeNode
-}
-
 func Preorder(node *dataStruct.TreeNode) []int {
-	ts := new(TreeStack)
+	ts := new(bitree.TreeStack)
 	var array []int
-	p := node
-	for p != nil || !ts.IsEmpty() {
-		fmt.Println(p)
-		for p != nil {
-			ts.Push(p)
-			p = p.Left
+	ts.Push(node)
+	for !ts.IsEmpty() {
+		p := ts.Pop()
+		array = append(array, p.Val)
+		if p.Right != nil {
+			ts.Push(p.Right)
 		}
-		q := ts.Pop()
-		array = append(array, q.Val)
-		if q.Right != nil {
-			p = q.Right
+		if p.Left != nil {
+			ts.Push(p.Left)
 		}
 	}
-	return array
-}
 
-func (t *TreeStack) Push(n *dataStruct.TreeNode) {
-	if n != nil {
-		t.Stack = append(t.Stack, n)
-	}
-}
-func (t *TreeStack) Pop() *dataStruct.TreeNode {
-	if len(t.Stack) > 0 {
-		n := t.Stack[len(t.Stack)-1]
-		t.Stack = t.Stack[:len(t.Stack)-1]
-		return n
-	}
-	return nil
-}
-func (t *TreeStack) IsEmpty() bool {
-	return len(t.Stack) == 0
+	return array
 }

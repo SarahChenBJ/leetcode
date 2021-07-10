@@ -1,4 +1,4 @@
-package BiTree
+package bitree
 
 /*字符串形式构建二叉树*/
 

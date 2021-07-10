@@ -1,4 +1,4 @@
-package BiTree
+package bitree
 
 /*
 226. Invert Binary Tree #

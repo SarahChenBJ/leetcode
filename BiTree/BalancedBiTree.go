@@ -1,4 +1,4 @@
-package BiTree
+package bitree
 
 /*
 110. Balanced Binary Tree #

@@ -1,4 +1,4 @@
-package BiTree
+package bitree
 
 /*
 257. Binary Tree Paths #
